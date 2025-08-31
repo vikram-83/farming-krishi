@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agro Fleet - Agriculture Supplies & Equipment</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5fff5; color:#333; }
+    nav { background:#2e7d32; padding:12px 20px; color:white; display:flex; justify-content:space-between; align-items:center; }
+    nav a { color:white; text-decoration:none; margin:0 10px; font-weight:bold; }
+    nav a:hover { text-decoration:underline; }
+     /* Slider container */
+            .slider {
+                position: relative;
+                max-width: 100%;
+                height: 500px;
+                overflow: hidden;
+                
+            }
+    
+            .slides {
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+            }
+    
+            .slide {
+                min-width: 100%;
+                box-sizing: border-box;
+            }
+    
+            .slide img {
+                width: 100%;
+                height: 500px;
+                object-fit: cover;
+            }
+    
+            /* Navigation buttons */
+            .prev, .next {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: rgba(0,0,0,0.5);
+                color: white;
+                padding: 10px;
+                cursor: pointer;
+                border: none;
+            }
+    
+            .prev {
+                left: 10px;
+            }
+    
+            .next {
+                right: 10px;
+            }
+    .hero { background:linear-gradient(135deg,#4CAF50,#8BC34A,#CDDC39); color:white; text-align:center; padding:60px 20px; }
+    .hero h1 { font-size:42px; margin-bottom:15px; }
+    .hero p { font-size:18px; margin-bottom:20px; }
+    .btn { padding:10px 20px; border:none; border-radius:6px; cursor:pointer; font-weight:bold; }
+    .btn-primary { background:green; color:white; }
+    .btn-primary:hover { }
+    .btn-outline { background:transparent; border:2px solid white; color:white; }
+    .btn-outline:hover { background:white; color:#2e7d32; }
+    section { padding:50px 20px; }
+    h2 { text-align:center; margin-bottom:30px; color:#2e7d32; }
+    .grid { display:grid; gap:20px; }
+    .grid-3 { grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
+    .grid-4 { grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+    .card { background:white; border:1px solid #ccc; border-radius:10px; overflow:hidden; box-shadow:0 2px 5px rgba(0,0,0,0.1); transition:0.3s; }
+    .card:hover { transform:scale(1.03); }
+    .card img { width:100%; height:180px; object-fit:cover; }
+    .card-body { padding:15px; }
+    .title { font-size:18px; font-weight:bold; margin-bottom:8px; }
+    .desc { color:#555; font-size:14px; margin-bottom:8px; }
+    .price { margin:8px 0; font-size:16px; }
+    .price del { color:#888; margin-right:5px; }
+    .stars { color:#ffb400; margin-bottom:6px; }
+    .badge { display:inline-block; padding:4px 8px; border-radius:6px; font-size:13px; margin-bottom:8px; }
+    .available { background:#c8e6c9; color:#2e7d32; }
+    .not-available { background:#ffcdd2; color:#b71c1c; }
+
+    
+    label { font-weight:bold; display:block; margin-bottom:5px; }
+    input, select, textarea { width:100%; padding:8px; border:1px solid #bbb; border-radius:6px; }
+    
+   
+    footer {
+  background: #064e3b; /* Dark green */
+  color: #fff;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  gap: 50px;
+}
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.footer-box h3, .footer-box h4 {
+  margin-bottom: 10px;
+  color: #ffd700; /* gold accent */
+}
+.footer-box p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.footer-box ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-box ul li {
+  margin: 6px 0;
+}
+.footer-box ul li a {
+  color: #c0e6c4;
+  text-decoration: none;
+}
+.footer-box ul li a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #2e7d32;
+  padding-top: 10px;
+  font-size: 14px;
+  color: #c0e6c4;
+}
+
+
+ #a1{
+                background-size: cover;
+            }
+            #a3{
+                background-color: grey;
+                font-size: medium;
+                
+                
+            }
+            #a4 :hover{
+                color: white;
+                
+                
+                font-size: medium;
+                
+                
+            }
+          
+.suppliers-section {
+  padding: 40px;
+  background: #f9fff7;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+.suppliers-section h2 {
+  color: #2b6e32;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.suppliers-section .sub-text {
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.supplier-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.supplier-card {
+  background: #fff;
+  border: 2px solid #e2e2e2;
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+.supplier-card:hover {
+  transform: scale(1.05);
+}
+.supplier-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.supplier-card h3 {
+  margin: 15px 0 10px;
+  color: #1a4d2e;
+}
+.rating {
+  color: #f39c12;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.price {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.price .old {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 8px;
+}
+.badge {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+.available {
+  color: #155724;
+  background: #d4edda;
+}
+.not-available {
+  color: #721c24;
+  background: #f8d7da;
+}
+button {
+  background: #28a745;
+  border: none;
+  padding: 10px 18px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/*---booking section*/
+
+     body {
+      font-family: Arial, sans-serif;
+      background:#f5fff5;
+      margin:0;
+      padding:20px;
+    }
+    h2 {
+      text-align:center;
+      color:#2e7d32;
+    }
+    form {
+      max-width:600px;
+      margin:20px auto;
+      background:#fff;
+      padding:20px;
+      border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight:bold;
+      display:block;
+      margin:10px 0 5px;
+    }
+    select, input, textarea {
+      width:100%;
+      padding:10px;
+      margin-bottom:15px;
+      border:1px solid #ccc;
+      border-radius:5px;
+    }
+    .price-box {
+      background:#e8f5e9;
+      padding:10px;
+      border-radius:5px;
+      margin-bottom:15px;
+    }
+    .btn {
+      display:block;
+      width:100%;
+      background:#2e7d32;
+      color:#fff;
+      padding:12px;
+      border:none;
+      font-size:16px;
+      border-radius:5px;
+      cursor:pointer;
+    }
+    .btn:hover {
+      background:#1b5e20;
+    }
+    /* Confirmation Box */
+    #confirmationBox {
+      max-width:600px;
+      margin:20px auto;
+      background:#e3f2fd;
+      padding:20px;
+      border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+      display:none;
+      flex-direction: column;  /* vertical layout */
+      gap:12px;
+    }
+    #confirmationBox h3 {
+      color:#1565c0;
+      text-align:center;
+      margin-bottom:15px;
+    }
+    .confirm-item {
+      background:#fff;
+      padding:10px 15px;
+      border-left:4px solid #1565c0;
+      border-radius:5px;
+      box-shadow:0 1px 3px rgba(0,0,0,0.1);
+    }
+    .confirm-item strong {
+      color:#1565c0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div><i class="fas fa-seedling"></i> <b>AGRO FLEET</b></div>
+    <div>
+      <a href="#food">Food</a>
+      <a href="#equipment">Equipment</a>
+      <a href="#supplies">Equipement Supplies</a>
+      <a href="web6.html"> Mandi rate </a>
+      <a href="web7.html"> Shope owner</a>
+      <a href="#aman"> Now Booking</a>
+    </div>
+    <div><a href="WEB3.html"><i class="fas fa-user"></i> My Account</a></div>
+  </nav>
+
+  <!-- Hero 
+   <div class="slider">
+    
+            <div class="slides">
+              
+    
+                <div class="slide">
+                    <img src="https://media.istockphoto.com/id/506164764/photo/tractor-spraying-soybean-field.jpg?s=612x612&w=0&k=20&c=h27yHr07QNSghYS20iwYBCGjZIa2HlXqrZDkM0ZsYEw=" alt="Ad 1" id="a1"
+                    
+                     
+                </div>
+                <div class="slide">
+                    <img src="https://media.istockphoto.com/id/1346294867/photo/smart-farming-concept.jpg?s=612x612&w=0&k=20&c=wwiWQWIaTAojgCV8lOplPh4cA8g2spKbESFD-nV7TVA=" alt="Ad 2" id="a1">
+       
+                </div>
+                <div class="slide">
+                    <img src="https://media.istockphoto.com/id/1280784956/photo/young-indian-bank-officer-and-farmer-showing-smartphone-at-agriculture-field.jpg?s=612x612&w=0&k=20&c=UcXPgEZp8Xq3F-4pdRrLNh2ZGp_npxbnPgZRnrV1ZP8=" alt="Ad 3" id="a1"> >
+                    
+    
+                </div>
+            </div>
+            <button class="prev">&#10094;</button>
+             <button class="next">&#10095;</button> -->
+        
+        
+        </div>
+
+  <section class="hero">
+
+    <h1>Modern Agriculture Solutions</h1>
+    <p>Your one-stop destination for quality products & farming equipment</p>
+   <a href="#food"> <button  onclick="document.getElementById('food').scrollIntoView({behavior:'smooth'})">Explore Products</button></a>
+  <a href="#aman"><button  onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book Equipment</button></a>
+  </section>
+
+  <!-- Food Products -->
+  <section id="food">
+    <h2>🍅 Fresh Food Products</h2>
+    <div class="grid grid-4">
+
+      <div class="card">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4ed5cc98-86c6-4f34-b2b5-4390793cbd82.png" alt="Tomatoes">
+        <div class="card-body">
+          <span class="badge available">✅ Available</span>
+          <div class="title">Organic Tomatoes</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="desc">Pesticide-free fresh tomatoes</div>
+          <div class="price"><del>₹150</del> ₹120/kg</div>
+          <button class="btn btn-primary" onclick="cart('Organic Tomatoes')">🛒 Add</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ad8826fc-68b2-49a2-b984-33b870c488b5.png" alt="Wheat">
+        <div class="card-body">
+          <span class="badge available">✅ Available</span>
+          <div class="title">Premium Wheat</div>
+          <div class="stars">⭐⭐⭐⭐☆</div>
+          <div class="desc">High-quality grains</div>
+          <div class="price"><del>₹60</del> ₹45/kg</div>
+          <button class="btn btn-primary" onclick="cart('Premium Wheat')">🛒 Add</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d579fabd-2a8f-4c44-a9de-e0b10ab0adeb.png" alt="Vegetables">
+        <div class="card-body">
+          <span class="badge not-available">❌ Not Available</span>
+          <div class="title">Mixed Vegetables</div>
+          <div class="stars">⭐⭐⭐☆☆</div>
+          <div class="desc">Seasonal fresh vegetables</div>
+          <div class="price"><del>₹100</del> ₹85/kg</div>
+          <button class="btn btn-primary" disabled>🛒 Add</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/933c379d-66ae-4781-afab-aef522ef079e.png" alt="Rice">
+        <div class="card-body">
+          <span class="badge available">✅ Available</span>
+          <div class="title">Basmati Rice</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="desc">Aromatic long-grain</div>
+          <div class="price"><del>₹110</del> ₹90/kg</div>
+          <button class="btn btn-primary" onclick="cart('Basmati Rice')"> Add</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Equipment -->
+  <section id="equipment" style="background:#f1f8e9">
+    <h2>🚜 Farming Equipment</h2>
+    <div class="grid grid-3">
+
+      <div class="card">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ac1980ee-4242-468b-b128-130fc3df55d9.png" alt="Tractor">
+        <div class="card-body">
+          <span class="badge available">✅ Available</span>
+          <div class="title">Modern Tractor</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="desc">55 HP with advanced features</div>
+          <div class="price"><del>₹10,000</del> ₹8,500/day</div>
+          <button class="btn btn-primary" onclick="cart('Tractor Rental')">5\ppp\">🛒 Rent</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1adf1d6f-1ab4-41a7-af51-8f6995800a91.png" alt="Irrigation">
+        <div class="card-body">
+          <span class="badge available">✅ Available</span>
+          <div class="title">Irrigation System</div>
+          <div class="stars">⭐⭐⭐⭐☆</div>
+          <div class="desc">Complete water solution</div>
+          <div class="price"><del>₹4,000</del> ₹3,200/day</div>
+          <button class="btn btn-primary" onclick="cart('Irrigation Rental')">🛒 Rent </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/edf4295e-aee7-4bb3-a54f-e79c288c1f2c.png" alt="Harvester">
+        <div class="card-body">
+          <span class="badge not-available">❌ Not Available</span>
+          <div class="title">Combine Harvester</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="desc">Efficient crop harvesting</div>
+          <div class="price"><del>₹14,000</del> ₹12,000/day</div>
+          <button class="btn btn-primary" disabled>🛒 Rent</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Supplies -->
+  <section id="supplies">
+    <h2>🌱 Agriculture Supplies</h2>
+    <div class="grid grid-4">
+
+      <div class="card">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/29cae335-d307-4a2a-ab23-81a6df4ec30d.png" alt="Fertilizer">
+        <div class="card-body">
+          <span class="badge available">✅ Available</span>
+          <div class="title">Organic Fertilizer</div>
+          <div class="stars">⭐⭐⭐⭐☆</div>
+          <div class="desc">Natural nutrients for soil</div>
+          <div class="price"><del>₹450</del> ₹350/bag</div>
+          <button class="btn btn-primary" onclick="cart('Fertilizer')">🛒 Order</a></button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/98545ffc-3387-4fe6-b799-7d7a0e2939d7.png" alt="Seeds">
+        <div class="card-body">
+          <span class="badge available">✅ Available</span>
+          <div class="title">Quality Seeds</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="desc">High germination rate</div>
+          <div class="price"><del>₹220</del> ₹180/kg</div>
+          <button class="btn btn-primary" onclick="cart('Seeds')">🛒 Order</button></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3b81008d-5d1c-4770-a084-80fa23784f64.png" alt="Plants">
+        <div class="card-body">
+          <span class="badge not-available">❌ Not Available</span>
+          <div class="title">Plants (Paudhe)</div>
+          <div class="stars">⭐⭐⭐☆☆</div>
+          <div class="desc">Healthy farm saplings</div>
+          <div class="price"><del>₹30</del> ₹25/plant</div>
+          <button class="btn btn-primary" disabled>🛒 Order</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e08eedfa-2d9d-44d2-af84-c86a091f0b33.png" alt="Protection">
+        <div class="card-body">
+          <span class="badge available">✅ Available</span>
+          <div class="title">Crop Protection</div>
+          <div class="stars">⭐⭐⭐⭐☆</div>
+          <div class="desc">Safe pest control</div>
+          <div class="price"><del>₹500</del> ₹420/unit</div>
+          <button class="btn btn-primary" onclick="cart('Crop Protection')">🛒 Order</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <h2 id="aman" >🌾 AgroFleet Booking Page</h2>
+  <form id="bookingForm" onsubmit="return confirmBooking()">
+    
+    <!-- Supplier or Rental -->
+    <label for="type">Booking From:</label>
+    <select id="type" name="type" required>
+      <option value="">-- Select --</option>
+      <option value="supplier">Supplier</option>
+      <option value="rental">Rental Owner</option>
+    </select>
+
+    <!-- Order or Rent -->
+    <label for="action">Action:</label>
+    <select id="action" name="action" required>
+      <option value="">-- Select --</option>
+      <option value="order">Order</option>
+      <option value="rent">Rent</option>
+      <option value="cart">Add to Cart</option>
+    </select>
+
+    <!-- Product -->
+    <label for="product">Select Product/Equipment:</label>
+    <select id="product" name="product" required onchange="updatePrice()">
+      <option value="">-- Select --</option>
+      <option value="Tractor" data-price="1200">🚜 Tractor - ₹1200/day</option>
+      <option value="Fertilizer" data-price="600">🌱 Fertilizer (50kg) - ₹600</option>
+      <option value="Seeds" data-price="300">🌾 Seeds (per bag) - ₹300</option>
+      <option value="Sprayer" data-price="800">💨 Crop Sprayer - ₹800/day</option>
+    </select>
+
+    <!-- Quantity -->
+    <label for="quantity">Quantity / Days:</label>
+    <input type="number" id="quantity" name="quantity" min="1" value="1" onchange="updatePrice()" required>
+
+    <!-- Price Box -->
+    <div class="price-box">
+      <p><strong>Total Price:</strong> ₹<span id="totalPrice">0</span></p>
+    </div>
+
+    <!-- Location -->
+    <label for="location">Delivery / Pickup Location:</label>
+    <textarea id="location" name="location" required></textarea>
+
+    <!-- Payment -->
+    <label for="payment">Payment Method:</label>
+    <select id="payment" name="payment" required>
+      <option value="">-- Select --</option>
+      <option value="online">Online</option>
+      <option value="offline">Offline (Cash on Delivery)</option>
+    </select>
+
+    <button type="submit" class="btn">Book Now</button>
+  </form>
+
+  <!-- Confirmation Box -->
+  <div id="confirmationBox">
+    <h3>✅ Booking Confirmed!</h3>
+    <p><strong>Booking From:</strong> <span id="cType"></span></p>
+    <p><strong>Action:</strong> <span id="cAction"></span></p>
+    <p><strong>Product:</strong> <span id="cProduct"></span></p>
+    <p><strong>Quantity/Days:</strong> <span id="cQuantity"></span></p>
+    <p><strong>Total Price:</strong> ₹<span id="cPrice"></span></p>
+    <p><strong>Location:</strong> <span id="cLocation"></span></p>
+    <p><strong>Payment Method:</strong> <span id="cPayment"></span></p>
+  </div>
+
+  <script>
+    function updatePrice() {
+      const product = document.getElementById("product");
+      const quantity = document.getElementById("quantity").value;
+      const price = product.options[product.selectedIndex]?.getAttribute("data-price") || 0;
+      document.getElementById("totalPrice").innerText = price * quantity;
+    }
+
+    function confirmBooking() {
+      // Get form values
+      const type = document.getElementById("type").value;
+      const action = document.getElementById("action").value;
+      const product = document.getElementById("product").value;
+      const quantity = document.getElementById("quantity").value;
+      const price = document.getElementById("totalPrice").innerText;
+      const location = document.getElementById("location").value;
+      const payment = document.getElementById("payment").value;
+
+      // Fill confirmation box
+      document.getElementById("cType").innerText = type;
+      document.getElementById("cAction").innerText = action;
+      document.getElementById("cProduct").innerText = product;
+      document.getElementById("cQuantity").innerText = quantity;
+      document.getElementById("cPrice").innerText = price;
+      document.getElementById("cLocation").innerText = location;
+      document.getElementById("cPayment").innerText = payment;
+
+      // Show confirmation box
+      document.getElementById("confirmationBox").style.display = "block";
+
+      // Hide the form after booking
+      document.getElementById("bookingForm").style.display = "none";
+
+      return false; // Prevent page reload
+    }
+  </script>
+  
+
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-box">
+      <h3>🌱 Green Fields</h3>
+      <p>Your trusted partner in <b>modern agriculture, farming equipment, supplies</b> and online booking services.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-box">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Booking</a></li>
+      </ul>
+    </div>
+
+    <!-- Products -->
+    <div class="footer-box">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#">Food Products</a></li>
+        <li><a href="#">Farming Equipment</a></li>
+        <li><a href="#">Agriculture Supplies</a></li>
+        <li><a href="#">Seeds & Fertilizers</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-box">
+      <h4>Contact Info</h4>
+      <p>📞 +91 9876543210</p>
+      <p>📧 info@greenfields.com</p>
+      <p>📍 Agriculture Hub, Farm Road</p>
+    </div>
+  </div>
+  </footer>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p style="background-color: green;">Best Farming Equipment, Agriculture Supplies & Online Booking Platform</p>
+  </div>
+
+    
+   
+
+
+  <script>
+    function cart(item){ alert(item + " added to cart ✅"); }
+    function book(e){ e.preventDefault(); alert("Booking submitted successfully ✅"); e.target.reset(); }
+  </script>
+
+</body>
+</html>
