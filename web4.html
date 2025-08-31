@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroFleet - My Account & Reviews</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    nav { background:#2e7d32; padding:12px 20px; color:white; display:flex; justify-content:space-between; align-items:center; }
+    nav a { color:white; text-decoration:none; margin:0 10px; font-weight:bold; }
+    nav a:hover { text-decoration:underline; }
+    h2 {
+      color: green;
+      margin-bottom: 10px;
+    }
+    .section {
+      background: #fff;
+      padding: 15px;
+      margin: 20px auto;
+      max-width: 600px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin: 8px 0 4px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: darkgreen;
+    }
+    .stars span {
+      font-size: 24px;
+      cursor: pointer;
+      color: gray;
+    }
+    .review {
+      border-top: 1px solid #ddd;
+      margin-top: 10px;
+      padding-top: 10px;
+      display: flex;
+      gap: 10px;
+    }
+    .review img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    .review-content {
+      flex: 1;
+    }
+    .star-display {
+      color: gold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+    <nav>
+    <div><i class="fas fa-seedling"></i> <b>AGRO FLEET</b></div>
+    <div>
+      <a href="#food">Food</a>
+      <a href="#equipment">Equipment</a>
+      <a href="#supplies">Equipement Supplies</a>
+      <a href="web6.html"> Mandi rate </a>
+      <a href="web7.html"> Shope owner</a>
+      <a href="#aman"> Now Booking</a>
+    </div>
+    <div><a href="WEB3.html"><i class="fas fa-user"></i> My Account</a></div>
+  </nav>
+
+
+  <!-- My Account -->
+  <div class="section" id="account">
+    <h2>My Account</h2>
+    <form id="accountForm">
+      <label>Full Name</label>
+      <input type="text" id="name" required>
+      
+      <label>Email</label>
+      <input type="email" id="email" required>
+      
+      <label>Password</label>
+      <input type="password" id="password" required>
+      
+      <button type="submit">Save</button>
+    </form>
+    <div id="accountDetails" style="margin-top:10px; display:none;">
+      <h3>Account Info:</h3>
+      <p><b>Name:</b> <span id="displayName"></span></p>
+      <p><b>Email:</b> <span id="displayEmail"></span></p>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div class="section" id="about">
+    <h2>About AgroFleet</h2>
+    <p>
+      AgroFleet is a platform that connects farmers with modern farming equipment and
+      logistics solutions. Farmers can rent tractors, harvesters, and other machinery
+      easily and affordably.
+    </p>
+    <p>Our mission: Empower farmers with technology 🚜🌾</p>
+  </div>
+
+  <!-- Rating & Reviews -->
+  <div class="section" id="reviews">
+    <h2>Ratings & Reviews</h2>
+    
+    <div class="stars" id="starRating">
+      <span data-star="1">★</span>
+      <span data-star="2">★</span>
+      <span data-star="3">★</span>
+      <span data-star="4">★</span>
+      <span data-star="5">★</span>
+    </div>
+    
+    <textarea id="reviewText" rows="3" placeholder="Write your review..."></textarea>
+    <button onclick="submitReview()">Submit Review</button>
+
+    <div id="reviewList"></div>
+  </div>
+
+  <script>
+    let selectedRating = 0;
+
+    // Star rating selection
+    document.querySelectorAll("#starRating span").forEach(star => {
+      star.addEventListener("click", function() {
+        selectedRating = this.getAttribute("data-star");
+        document.querySelectorAll("#starRating span").forEach(s => {
+          s.style.color = s.getAttribute("data-star") <= selectedRating ? "gold" : "gray";
+        });
+      });
+    });
+
+    // Save account details
+    document.getElementById("accountForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("displayName").innerText = document.getElementById("name").value;
+      document.getElementById("displayEmail").innerText = document.getElementById("email").value;
+      document.getElementById("accountDetails").style.display = "block";
+      this.reset();
+    });
+
+    // Submit review
+    function submitReview() {
+      const reviewText = document.getElementById("reviewText").value;
+      if (selectedRating == 0 || reviewText.trim() === "") {
+        alert("Please select a rating and write a review.");
+        return;
+      }
+
+      const reviewList = document.getElementById("reviewList");
+
+      const reviewDiv = document.createElement("div");
+      reviewDiv.classList.add("review");
+
+      reviewDiv.innerHTML = `
+        <img src="https://via.placeholder.com/50" alt="User">
+        <div class="review-content">
+          <div class="star-display">${"★".repeat(selectedRating)}${"☆".repeat(5 - selectedRating)}</div>
+          <p>${reviewText}</p>
+        </div>
+      `;
+
+      reviewList.appendChild(reviewDiv);
+
+      document.getElementById("reviewText").value = "";
+      selectedRating = 0;
+      document.querySelectorAll("#starRating span").forEach(s => s.style.color = "gray");
+    }
+  </script>
+
+</body>
+</html>
